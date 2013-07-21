@@ -11,7 +11,11 @@ $options['pass'] = "95zkrt6zlfu2racvaboccae9nklpwks3";
 
 try{
 	$client = new couchClient($couch_dsn,$couch_db,$options);
-	$response = $client->deleteDatabase();
+	$response = $client->getAllDocs();
+  foreach ($response->rows as $row ) {
+	$client->deleteDoc($client->getDoc($row->id));
+  }
+	
 }catch(Exception $e){
 	$client = new couchClient($couch_dsn,$couch_db,$options);
 	$client->createDatabase();
