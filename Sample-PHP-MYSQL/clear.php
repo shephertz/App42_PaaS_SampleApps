@@ -5,5 +5,5 @@ $dbhandle = mysql_connect("10.0.0.52:36514", "d3nih43ocwg1awyl", "v6jctfjy074tce
 $selected = mysql_select_db("testsamplejava",$dbhandle);
 $result = mysql_query("delete from user");
 
-header("Location: index.html");
+header("Location: index.php");
 ?>

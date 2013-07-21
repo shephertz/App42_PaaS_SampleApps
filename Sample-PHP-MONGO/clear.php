@@ -15,5 +15,5 @@ $conn->close();
   die('Error: ' . $e->getMessage());
 }
 
-header("Location: index.html");
+header("Location: index.php");
 ?>

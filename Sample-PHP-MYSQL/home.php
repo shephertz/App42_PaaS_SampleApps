@@ -15,6 +15,6 @@ while ($row = mysql_fetch_array($result)) {
    echo "<tr><td>".$row{'username'}."</td><td>".$row{'email'}."</td><td>".$row{'description'}."</td></tr>";
 }
 ?>
-</table><div align="left"><form action="clear.php" method="get"><input type="submit" value="Clear Data" /></form></div><br/><br/><a href="index.html">Create Post</a>
+</table><div align="left"><form action="clear.php" method="get"><input type="submit" value="Clear Data" /></form></div><br/><br/><a href="index.php">Create Post</a>
 </body>
 </html>

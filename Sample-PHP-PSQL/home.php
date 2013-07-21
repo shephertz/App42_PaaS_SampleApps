@@ -17,6 +17,6 @@ for($ri = 0; $ri < $numrows; $ri++) {
 }
 
 ?>
-</table><div align="left"><form action="clear.php" method="get"><input type="submit" value="Clear Data" /></form></div><br/><br/><a href="index.html">Create Post</a>
+</table><div align="left"><form action="clear.php" method="get"><input type="submit" value="Clear Data" /></form></div><br/><br/><a href="index.php">Create Post</a>
 </body>
 </html>
