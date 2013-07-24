@@ -1,29 +1,74 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="contactPage_title">User Input Form</div>
+  <div class="form_wrapper">
+    <%= form_for(@user) do |f| %>
+      <fieldset>
+        <legend>Personal Particular</legend>
+        <div class="contactForm_tr">
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+            <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="contactForm_td1">Name</div>
+        <div class="contactForm_tdMiddle">: </div>
+        <div class="contactForm_td2"><%= f.text_field :name, :class => "Personal-input", :id => "contactPerson"%></div>
+        </br>
+        </br>
+        <div class="contactForm_td1">Email</div>
+        <div class="contactForm_tdMiddle">: </div>
+        <div class="contactForm_td2"><%= f.text_field :email, :class => "Personal-input", :maxlength => "30" %></div>
+      </fieldset>
+      <fieldset>
+        <legend>What do you about this Page :</legend>
+        <div class="massage-box">
+          <div class="field">
+           <%= f.text_area :desc, :cols => "30", :rows => "5", :class => "massage-textFild", :placeholder => 'Enter your instruction here...' %>
+          </div>
+        </div>
+      </fieldset>
+      
+      <div class="form-button" style="margin-left:100px; margin-right:10px;">
+        <!-- <input id="Submit" class="submit_btn" type="image" border="0" name="submit" alt="Submit" src="images/submit_btn.png"></input> -->
+        <%= image_submit_tag("submit_btn.png") %>
+      </div>
+      <div class="form-button">
+        <!-- <input id="Submit"  class="clear_btn" type="image" border="0" name="clear" alt="clear" src="images/clear_btn.png"> -->
+        <%= image_submit_tag("clear_btn.png") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="reachus_wrapper"> 
+    <div class="reach_icon">
+      <!-- <img border="0" alt="REACH US AT" src="images/reach_icon.png"></img> -->
+      <%= link_to image_tag('reach_icon.png'), "#" %>
     </div>
-  <% end %>
+    <div class="reach_txt">
+      <div class="reachusTitle"> REACH US AT: </div>
+        <div class="reachuslable"> Sales Enquiries: </div>
+        <div class="reachusLink"><a href="mailto:sales@shephertz.com">sales@shephertz.com</a> </div>
+        <div class="reachuslable">Feedback:</div>
+        <div class="reachusLink"><a href="mailto:feedback@shephertz.com">feedback@shephertz.com</a></div>
+        <div class="reachuslable">Customer Support:</div>
+        <div class="reachusLink"><a href="mailto:support@shephertz.com">support@shephertz.com</a></div>
+      </div>
+    </div>
+          
+    <div class="reachus_wrapper_vcard"> 
+      <div class="vcard_txt">
+        ShepHertz Technologies Pvt. Ltd.
+        Spaze I-Tech Park, Tower-A,
+        11th floor - 1128, sector-49,
+        Sohna Road, Gurgaon - 122001
+        INDIA
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :desc %><br />
-    <%= f.text_area :desc %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>  
