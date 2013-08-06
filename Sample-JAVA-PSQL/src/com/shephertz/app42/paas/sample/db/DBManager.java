@@ -7,7 +7,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
+
 import com.shephertz.app42.paas.sample.util.Util;
 
 public class DBManager {
@@ -16,10 +20,9 @@ public class DBManager {
 
 	public DBManager() {
 		try {
-			System.out.println("I M HERE");
 			dataSource = new DriverManagerDataSource();
 			dataSource.setDriverClassName("org.postgresql.Driver");
-			String dbUrl = Util.getDBUrl();
+			String dbUrl = Util.getDBIp();
 			String username = Util.getDBUser();
 			String password = Util.getDBPassword();
 			String dbName = Util.getDBName();
@@ -31,8 +34,10 @@ public class DBManager {
 					+ dbName + "?autoReconnect=true");
 			dataSource.setUsername(username);
 			dataSource.setPassword(password);
+			createTable("CREATE TABLE app42_user(username varchar(255), email varchar(255), description text)");
 		} catch (Exception e) {
-			e.printStackTrace();
+			// handle Exception
+			System.out.println("Table Already Created" + e);
 		}
 	}
 
@@ -75,18 +80,41 @@ public class DBManager {
 	}
 
 	/**
+	 * Insert (This function inserts data into the table)
+	 * 
 	 * @param query
-	 * @return
-	 * @throws Exception 
+	 * @throws SQLException
 	 */
-	public void insertForAffectedRows(String query) throws Exception {
+	public void insert(final String query) {
 		JdbcTemplate db = new JdbcTemplate(DBManager.getInstance()
 				.getDataSource());
-		String sqlQuery = query;
+
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		db.update(new PreparedStatementCreator() {
+			@Override
+			public java.sql.PreparedStatement createPreparedStatement(
+					java.sql.Connection connection) throws SQLException {
+				PreparedStatement ps = (PreparedStatement) connection
+						.prepareStatement(query);
+				// ps.setString(1, name);
+				return ps;
+			}
+		}, keyHolder);
+
+	}
+
+	/*
+	 * Create table
+	 */
+	public static void createTable(String query) throws SQLException {
+		JdbcTemplate db = new JdbcTemplate(DBManager.getInstance()
+				.getDataSource());
 		try {
-			db.update(sqlQuery);
+			db.execute(query);
 		} catch (Exception e) {
-			throw new Exception("Error executing query: " + sqlQuery);
+			System.out.println("---------------EXCEPTION------" + e);
+			throw new SQLException("Error while executing query: ' " + query
+					+ " '");
 		}
 	}
 

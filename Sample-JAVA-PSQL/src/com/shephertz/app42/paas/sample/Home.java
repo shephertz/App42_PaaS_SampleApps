@@ -35,34 +35,38 @@ public class Home extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<Map<String, Object>> result = null;
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.print("<!doctype html><html><head><meta charset='utf-8'><title>App42 Sample Java-PostgreSql Application</title><link href='css/style-User-Input-Form.css' rel='stylesheet' type='text/css'></head><body><div class='App42PaaS_header_wrapper'><div class='App42PaaS_header_inner'><div class='App42PaaS_header'><div class='logo'><a href='http://paas.shephertz.com'><img border='0' alt='App42PaaS' src='images/logo.png'></img></a></div></div></div></div><div class='App42PaaS_body_wrapper'><div class='App42PaaS_body'><div class='App42PaaS_body_inner'><div class='contactPage_title'>");
 		try {
 			String query = "select * from app42_user";
 			System.out.println("Query: " + query);
 			DBManager db = new DBManager();
 			result = db.select(query);
+			if (result.size() != 0) {
+				out.print("<table><thead class='table-head'><tr><td>Username</td><td>Email</td><td>Description</td></tr></thead><tbody>");
+				for (int i = 0; i < result.size(); i++) {
+					Map<String, Object> appData = result.get(i);
+					out.print("<tr><td>" + appData.get("username")
+							+ "</td><td>" + appData.get("email") + "</td><td>"
+							+ appData.get("description") + "</td></tr>");
+				}
+				out.print("</tbody></table>");
+			} else {
+				out.print("<h1>No data</h1><br/><br/>");
+			}
+			out.print("<br/><a href='/' style='font-size: 18px;'>Create Post</a>");
 		} catch (SQLException e) {
 			e.printStackTrace();
+			out.print("<p align='center'>" + e.getMessage() + "</p><br/><br/>");
+			out.print("<br/><a href='/' style='font-size: 18px;'>Back</a>");
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			out.print("<p align='center'>" + ex.getMessage() + "</p><br/><br/>");
+			out.print("<br/><a href='/' style='font-size: 18px;'>Back</a>");
 		}
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.print("<html><title>App42-Java-Postgres-Sample </title><body>");
-		if (result.size() != 0) {
-			out.print("<table border='1'><tr><td><b>Username</b></td><td><b>Email</b></td><td><b>Description</b></td></tr>");
-			for (int i = 0; i < result.size(); i++) {
-				Map<String, Object> appData = result.get(i);
-				out.print("<tr><td>" + appData.get("username") + "</td><td>"
-						+ appData.get("email") + "</td><td>"
-						+ appData.get("description") + "</td></tr>");
-			}
-			out.print("</table><br/><br/>");
-		} else {
-			out.print("<h1>No data</h1><br/><br/>");
-		}
-		out.print("<a href='/'>Create Post</a>");
-		out.print("</body></html>");
+		out.print("</div></div></div></div></body></html>");
 	}
 
 	public void save(HttpServletRequest request, HttpServletResponse response)

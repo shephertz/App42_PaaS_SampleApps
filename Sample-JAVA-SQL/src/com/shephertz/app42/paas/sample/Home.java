@@ -38,6 +38,9 @@ public class Home extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		
 		ArrayList<Map<String, Object>> result = null;
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.print("<!doctype html><html><head><meta charset='utf-8'><title>App42 Sample Java-MySql Application</title><link href='css/style-User-Input-Form.css' rel='stylesheet' type='text/css'></head><body><div class='App42PaaS_header_wrapper'><div class='App42PaaS_header_inner'><div class='App42PaaS_header'><div class='logo'><a href='http://paas.shephertz.com'><img border='0' alt='App42PaaS' src='images/logo.png'></img></a></div></div></div></div><div class='App42PaaS_body_wrapper'><div class='App42PaaS_body'><div class='App42PaaS_body_inner'><div class='contactPage_title'>");
 		try {
 			// select query
 			String query = "select * from user";
@@ -45,16 +48,7 @@ public class Home extends HttpServlet {
 			// Database Manager Called
 			DBManager db = new DBManager();
 			result = db.select(query);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-
-		// Result is then show in form of tables on UI
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.print("<!doctype html><html><head><meta charset='utf-8'><title>App42 Sample Java-MySql Application</title><link href='css/style-User-Input-Form.css' rel='stylesheet' type='text/css'></head><body><div class='App42PaaS_header_wrapper'><div class='App42PaaS_header_inner'><div class='App42PaaS_header'><div class='logo'><a href='http://paas.shephertz.com'><img border='0' alt='App42PaaS' src='images/logo.png'></img></a></div></div></div></div><div class='App42PaaS_body_wrapper'><div class='App42PaaS_body'><div class='App42PaaS_body_inner'><div class='contactPage_title'>");
+			// Result is then show in form of tables on UI
 		if (result.size() != 0) {
 			out.print("<table><thead class='table-head'><tr><td>Username</td><td>Email</td><td>Description</td></tr></thead><tbody>");
 			for (int i = 0; i < result.size(); i++) {
@@ -68,6 +62,15 @@ public class Home extends HttpServlet {
 			out.print("<h1>No data</h1><br/><br/>");
 		}
 		out.print("<br/><a href='/' style='font-size: 18px;'>Create Post</a>");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			out.print("<h2 align='center'>"+e.getMessage()+"</h2><br/><br/>");
+			out.print("<br/><a href='/' style='font-size: 18px;'>Back</a>");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			out.print("<h2 align='center'>"+ex.getMessage()+"</h2><br/><br/>");
+			out.print("<br/><a href='/' style='font-size: 18px;'>Back</a>");
+		}
 		out.print("</div></div></div></div></body></html>");
 	}
 

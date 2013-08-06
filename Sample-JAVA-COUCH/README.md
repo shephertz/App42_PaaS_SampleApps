@@ -1,4 +1,4 @@
-Getting Started with Java-MySql Sample Application:
+Getting Started with Java-Couch Sample Application:
 ----------------------------------------------------
 
 This application is basically a simple User Input Form that takes input from user and saves it in database.
@@ -10,7 +10,7 @@ In order to configure this application following steps are to be done:
 
 1. Open Config.properties (located in WebContent folder).
 
-2. Update the details of your MySql service in it.
+2. Update the details of your Couch service in it.
 
          app42.paas.db.username = <your_database_username>
          app42.paas.db.port = <your_service_port>
