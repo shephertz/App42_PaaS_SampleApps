@@ -15,14 +15,13 @@ public class DBManager {
 	private Database db = null;
 
 	public DBManager(){
-		String dbUrl = Util.getDBUrl();
+		String dbIp = Util.getDBIp();
 		int port = Util.getDBPort();
 		String dbName = Util.getDBName();
 		String dbUser = Util.getDBUser();
 		String password = Util.getDBPassword();
-		session = new Session(dbUrl, port);
-		// boolean auth = db.authenticate(dbUser, password.toCharArray());
-		
+		session = new  Session(dbIp, port, dbUser, password);
+		//boolean auth = db.authenticate(dbUser, password.toCharArray());
 		try {
 			db = session.getDatabase(dbName);
 		}catch(Exception e){
@@ -51,6 +50,7 @@ public class DBManager {
 	}
 	
 	public void delete(){
+		db = session.getDatabase(Util.getDBName().toString());
 		session.deleteDatabase(db);
 	}
 	

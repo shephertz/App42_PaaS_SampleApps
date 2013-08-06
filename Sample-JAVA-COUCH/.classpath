@@ -14,14 +14,14 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/RAINA/Documents/WorkSpace-TEST/Sample/WebContent/WEB-INF/lib/org.apache.commons-logging-1.0.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RAINA/Documents/WorkSpace-TEST/Sample/WebContent/WEB-INF/lib/couchdb4j-0.1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RAINA/Documents/WorkSpace-TEST/Sample/WebContent/WEB-INF/lib/ezmorph-1.0.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RAINA/Documents/WorkSpace-TEST/Sample/WebContent/WEB-INF/lib/commons-beanutils-1.8.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RAINA/Documents/WorkSpace-TEST/Sample/WebContent/WEB-INF/lib/commons-collections-3.2.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RAINA/Documents/WorkSpace-TEST/Sample/WebContent/WEB-INF/lib/commons-httpclient-3.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RAINA/Documents/WorkSpace-TEST/Sample/WebContent/WEB-INF/lib/commons-codec-1.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RAINA/Documents/WorkSpace-TEST/Sample/WebContent/WEB-INF/lib/json-lib-2.2.3-jdk15.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RAINA/Documents/WorkSpace-TEST/Sample/WebContent/WEB-INF/lib/commons-lang-2.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-beanutils-1.8.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-codec-1.8.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-httpclient-3.0.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-lang-2.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/couchdb4j-0.1.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/json-lib-2.2.3-jdk15.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.apache.commons-logging-1.0.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

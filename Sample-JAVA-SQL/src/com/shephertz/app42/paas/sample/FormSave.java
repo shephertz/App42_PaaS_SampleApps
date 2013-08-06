@@ -1,6 +1,7 @@
 package com.shephertz.app42.paas.sample;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -63,8 +64,7 @@ public class FormSave extends HttpServlet {
 			response.setContentType("text/html");
 			PrintWriter out = response.getWriter();
 			out.print("<!doctype html><html><head><meta charset='utf-8'><title>App42 Sample Java-MySql Application</title><link href='css/style-User-Input-Form.css' rel='stylesheet' type='text/css'></head><body><div class='App42PaaS_header_wrapper'><div class='App42PaaS_header_inner'><div class='App42PaaS_header'><div class='logo'><a href='http://paas.shephertz.com'><img border='0' alt='App42PaaS' src='images/logo.png'></img></a></div></div></div></div><div class='App42PaaS_body_wrapper'><div class='App42PaaS_body'><div class='App42PaaS_body_inner'><div class='contactPage_title'>");
-			out.print("<h2 align='center'>" + ex.getMessage()
-					+ "</h2><br/><br/>");
+			out.print("<h2 align='center'>Error occured. See Logs.</h2><br/><br/>");
 			out.print("<br/><a href='/' style='font-size: 18px;'>Back</a>");
 			out.print("</div></div></div></div></body></html>");
 		}

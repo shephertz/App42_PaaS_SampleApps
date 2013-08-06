@@ -58,11 +58,11 @@ public class Home extends HttpServlet {
 			out.print("<br/><a href='/' style='font-size: 18px;'>Create Post</a>");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			out.print("<p align='center'>" + e.getMessage() + "</p><br/><br/>");
+			out.print("<p align='center'>Error occured. See Logs.</p><br/><br/>");
 			out.print("<br/><a href='/' style='font-size: 18px;'>Back</a>");
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			out.print("<p align='center'>" + ex.getMessage() + "</p><br/><br/>");
+			out.print("<p align='center'>Error occured. See Logs.</p><br/><br/>");
 			out.print("<br/><a href='/' style='font-size: 18px;'>Back</a>");
 		}
 
