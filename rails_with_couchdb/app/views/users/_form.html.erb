@@ -35,19 +35,16 @@
       </fieldset>
       
       <div class="form-button" style="margin-left:100px; margin-right:10px;">
-        <!-- <input id="Submit" class="submit_btn" type="image" border="0" name="submit" alt="Submit" src="images/submit_btn.png"></input> -->
         <%= image_submit_tag("submit_btn.png") %>
       </div>
       <div class="form-button">
-        <!-- <input id="Submit"  class="clear_btn" type="image" border="0" name="clear" alt="clear" src="images/clear_btn.png"> -->
-        <%= image_submit_tag("clear_btn.png") %>
+        <%= link_to image_tag("clear_btn.png", :border => 0), {:action => 'new', :controller => 'users'}, :class => 'clear_btn'%>
       </div>
     <% end %>
   </div>
 
   <div class="reachus_wrapper"> 
     <div class="reach_icon">
-      <!-- <img border="0" alt="REACH US AT" src="images/reach_icon.png"></img> -->
       <%= link_to image_tag('reach_icon.png'), "#" %>
     </div>
     <div class="reach_txt">

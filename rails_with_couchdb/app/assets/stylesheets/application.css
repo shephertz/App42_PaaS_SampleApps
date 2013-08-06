@@ -12,7 +12,6 @@
  *= require_tree .
  */
 
-
 body{ margin:0px; padding:0px; border:0px;}  
 fieldset{ border:1px solid #676767; margin-bottom:15px;}  
 .App42PaaS_header_wrapper{ float: left;height: 94px;width: 100%; min-width: 1024px; background-image:url(navigation_bar_bg.png); background-repeat: repeat-x; }  
