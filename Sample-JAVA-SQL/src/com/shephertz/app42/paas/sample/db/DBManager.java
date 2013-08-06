@@ -20,7 +20,7 @@ public class DBManager {
 	private static final DBManager dsManager = new DBManager();
 	static {
 		try {
-			createTable("create table user(username varchar(255), email varchar(255), description text)");
+			createTable("create table user(name varchar(255), email varchar(255), description text)");
 		} catch (Exception e) {
 			// do nothing
 			// table already created

@@ -1,9 +1,29 @@
 <?php 
 //connection to the database
-$dbhandle = mysql_connect("10.0.0.52:36514", "d3nih43ocwg1awyl", "v6jctfjy074tcee0t56xsqbax75k5wec", "testsamplejava")
+$lines = file("Config.properties");
+$user;
+$dbName;
+$ip;
+$port;
+$password; 
+foreach ($lines as $line) {
+        list($k, $v) = explode('=', $line);
+		if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.username"))) {
+			$user = rtrim(ltrim($v));
+        }if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.port"))) {
+			$port = rtrim(ltrim($v));
+        }if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.password"))) {
+			$password = rtrim(ltrim($v));
+        }if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.ip"))) {
+			$ip = rtrim(ltrim($v));
+        }if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.name"))) {
+			$dbName = rtrim(ltrim($v));
+        }
+ }
+$dbhandle = mysql_connect("$ip:$port", $user, $password, $dbName)
   or die("Unable to connect to MySQL");
-$selected = mysql_select_db("testsamplejava",$dbhandle);
-$result = mysql_query("delete from user");
+$selected = mysql_select_db($dbName,$dbhandle) or die(mysql_error());
+mysql_query("delete from user", $dbhandle);
 
 header("Location: index.php");
 ?>

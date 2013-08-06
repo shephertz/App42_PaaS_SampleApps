@@ -34,7 +34,7 @@ public class DBManager {
 					+ dbName + "?autoReconnect=true");
 			dataSource.setUsername(username);
 			dataSource.setPassword(password);
-			createTable("CREATE TABLE app42_user(username varchar(255), email varchar(255), description text)");
+			createTable("CREATE TABLE app42_user(name varchar(255), email varchar(255), description text)");
 		} catch (Exception e) {
 			// handle Exception
 			System.out.println("Table Already Created" + e);

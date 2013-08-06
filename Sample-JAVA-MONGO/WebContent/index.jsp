@@ -53,12 +53,12 @@
 								<div class="contactForm_td1">Name</div>
 								<div class="contactForm_tdMiddle">:</div>
 								<div class="contactForm_td2">
-									<input name="username" type="text" class="Personal-input"
+									<input name="name" type="text" class="Personal-input"
 										id="contactPerson" value="">
 								</div>
 								<div class="contactForm_td2"
 									style="color: red; padding-left: 90px; display: none;"
-									id="contactPersonErr">Username is mandatory</div>
+									id="contactPersonErr">Name is mandatory</div>
 							</div>
 							<div class="contactForm_tr">
 								<div class="contactForm_td1">Email</div>

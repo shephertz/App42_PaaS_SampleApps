@@ -42,14 +42,14 @@ public class FormSave extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// get request parameters
-		String username = request.getParameter("username");
+		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String description = request.getParameter("description");
 
 		try {
 			// insert query
-			String query = "INSERT INTO user(username,description,email) VALUES('"
-					+ username + "', '" + description + "', '" + email + "')";
+			String query = "INSERT INTO user(name,description,email) VALUES('"
+					+ name + "', '" + description + "', '" + email + "')";
 			System.out.println("Query: " + query);
 			// Database Manager called
 			DBManager db = new DBManager();

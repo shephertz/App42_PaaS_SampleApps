@@ -59,12 +59,12 @@ public class FormSave extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String username = request.getParameter("username");
+		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String description = request.getParameter("description");
 
 		try {
-			new DBManager().insert(username, email, description);
+			new DBManager().insert(name, email, description);
 			String newUrl = "http://" + request.getServerName() + ":"
 					+ request.getServerPort() + request.getContextPath() + "/home";
 

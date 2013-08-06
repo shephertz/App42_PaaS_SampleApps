@@ -39,9 +39,9 @@ public class DBManager {
 		return resultRows;
 	}
 	
-	public void insert(String username, String description, String email){
+	public void insert(String name, String description, String email){
 		Document doc = new Document();
-		doc.put("username", username);
+		doc.put("name", name);
 		doc.put("email", email);
 		doc.put("description", description);
 		

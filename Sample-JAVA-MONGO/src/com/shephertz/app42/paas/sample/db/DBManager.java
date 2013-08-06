@@ -38,12 +38,12 @@ public class DBManager {
 
 	}
 
-	public void insert(String user, String email, String description) {
+	public void insert(String name, String email, String description) {
 		try {
 			// boolean auth = db.authenticate(dbUser, password.toCharArray());
 			DBCollection table = db.getCollection("user");
 			BasicDBObject newDocument = new BasicDBObject();
-			newDocument.put("username", user);
+			newDocument.put("name", name);
 			newDocument.put("email", email);
 			newDocument.put("description", description);
 

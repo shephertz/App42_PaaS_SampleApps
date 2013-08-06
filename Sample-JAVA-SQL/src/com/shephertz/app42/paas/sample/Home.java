@@ -50,10 +50,10 @@ public class Home extends HttpServlet {
 			result = db.select(query);
 			// Result is then show in form of tables on UI
 		if (result.size() != 0) {
-			out.print("<table><thead class='table-head'><tr><td>Username</td><td>Email</td><td>Description</td></tr></thead><tbody>");
+			out.print("<table><thead class='table-head'><tr><td>Name</td><td>Email</td><td>Description</td></tr></thead><tbody>");
 			for (int i = 0; i < result.size(); i++) {
 				Map<String, Object> appData = result.get(i);
-				out.print("<tr><td>" + appData.get("username") + "</td><td>"
+				out.print("<tr><td>" + appData.get("name") + "</td><td>"
 						+ appData.get("email") + "</td><td>"
 						+ appData.get("description") + "</td></tr>");
 			}

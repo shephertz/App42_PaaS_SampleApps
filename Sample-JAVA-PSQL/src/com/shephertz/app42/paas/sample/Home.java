@@ -44,10 +44,10 @@ public class Home extends HttpServlet {
 			DBManager db = new DBManager();
 			result = db.select(query);
 			if (result.size() != 0) {
-				out.print("<table><thead class='table-head'><tr><td>Username</td><td>Email</td><td>Description</td></tr></thead><tbody>");
+				out.print("<table><thead class='table-head'><tr><td>Name</td><td>Email</td><td>Description</td></tr></thead><tbody>");
 				for (int i = 0; i < result.size(); i++) {
 					Map<String, Object> appData = result.get(i);
-					out.print("<tr><td>" + appData.get("username")
+					out.print("<tr><td>" + appData.get("name")
 							+ "</td><td>" + appData.get("email") + "</td><td>"
 							+ appData.get("description") + "</td></tr>");
 				}

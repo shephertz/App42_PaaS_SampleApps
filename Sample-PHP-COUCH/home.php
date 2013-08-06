@@ -25,7 +25,7 @@
                 	<thead class="table-head">
                     	<tr>
                         <td>Id</td>
-                        <td>Data</td>
+                        <td>Result</td>
                         </tr>
                 	</thead><tbody>
 <?php 
@@ -33,11 +33,32 @@ require_once "./lib/couch.php";
 require_once "./lib/couchClient.php";
 require_once "./lib/couchDocument.php";
 
-$couch_dsn = "http://10.0.0.52:29005/";
-$couch_db = "testsamplephp";
+//connection to the database
+$lines = file("Config.properties");
+$user;
+$dbName;
+$ip;
+$port;
+$password; 
+foreach ($lines as $line) {
+        list($k, $v) = explode('=', $line);
+		if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.username"))) {
+			$user = rtrim(ltrim($v));
+        }if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.port"))) {
+			$port = rtrim(ltrim($v));
+        }if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.password"))) {
+			$password = rtrim(ltrim($v));
+        }if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.ip"))) {
+			$ip = rtrim(ltrim($v));
+        }if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.name"))) {
+			$dbName = rtrim(ltrim($v));
+        }
+ }
+$couch_dsn = "http://$ip:$port/";
+$couch_db = $dbName;
 $options = array();
-$options['user'] = "23h4ngu5erxu9aty"; 
-$options['pass'] = "95zkrt6zlfu2racvaboccae9nklpwks3";
+$options['user'] = $user; 
+$options['pass'] = $password;
 try{
 	$client = new couchClient($couch_dsn,$couch_db,$options);
 }catch(Exception $e){
