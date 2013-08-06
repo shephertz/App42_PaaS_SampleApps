@@ -17,14 +17,25 @@ import com.shephertz.app42.paas.sample.util.Util;
 public class DBManager {
 
 	private DriverManagerDataSource dataSource = null;
+	private static final DBManager dsManager = new DBManager();
+	static {
+		try {
+			createTable("create table user(username varchar(255), email varchar(255), description text)");
+		} catch (Exception e) {
+			// do nothing
+			// table already created
+			System.out.println("Table Already Created");	
+		}
+	}
 
+	/*
+	 * Initialize MySql
+	 */
 	public DBManager() {
 		try {
-			System.out.println("I M HERE");
 			dataSource = new DriverManagerDataSource();
 			dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-			// dataSource.setDriverClassName("org.postgresql.Driver");
-			String dbUrl = Util.getDBUrl();
+			String dbUrl = Util.getDBIp();
 			String username = Util.getDBUser();
 			String password = Util.getDBPassword();
 			String dbName = Util.getDBName();
@@ -34,8 +45,6 @@ public class DBManager {
 					+ dbName);
 			dataSource.setUrl("jdbc:mysql://" + dbUrl + ":" + port + "/"
 					+ dbName + "?autoReconnect=true");
-			// dataSource.setUrl("jdbc:postgresql://" + dbUrl + ":" + port + "/"
-			// + dbName + "?autoReconnect=true");
 			dataSource.setUsername(username);
 			dataSource.setPassword(password);
 		} catch (Exception e) {
@@ -43,19 +52,25 @@ public class DBManager {
 		}
 	}
 
-	private static final DBManager dsManager = new DBManager();
-
+	/*
+	 * Get DBManager Instance
+	 */
 	public static DBManager getInstance() {
 		return dsManager;
 	}
 
+	/*
+	 * Get DriverManagerDatasource Instance
+	 */
 	public DriverManagerDataSource getDataSource() {
 		return dataSource;
 	}
 
 	/**
+	 * Select rows (This function fetches the rows from the table)
+	 * 
 	 * @param query
-	 * @return
+	 * @return ArrayList<Map<String, Object>>
 	 * @throws SQLException
 	 */
 	public ArrayList<Map<String, Object>> select(String sqlQuery)
@@ -82,33 +97,12 @@ public class DBManager {
 	}
 
 	/**
+	 * Insert (This function inserts data into the table)
+	 * 
 	 * @param query
-	 * @return
-	 */
-	public int insertForAffectedRows(String query) {
-		JdbcTemplate db = new JdbcTemplate(DBManager.getInstance()
-				.getDataSource());
-		String sqlQuery = query;
-		int insertId = db.update(sqlQuery);
-		return insertId;
-	}
-
-	public void execute(String query) throws SQLException {
-		JdbcTemplate db = new JdbcTemplate(DBManager.getInstance()
-				.getDataSource());
-		try {
-			db.execute(query);
-		} catch (Exception e) {
-			throw new SQLException("Error executing query " + query);
-		}
-	}
-
-	/**
-	 * @param query
-	 * @return
 	 * @throws SQLException
 	 */
-	public void insertForId(final String query) {
+	public void insert(final String query) {
 		JdbcTemplate db = new JdbcTemplate(DBManager.getInstance()
 				.getDataSource());
 
@@ -124,6 +118,17 @@ public class DBManager {
 			}
 		}, keyHolder);
 
+	}
+
+	public static void createTable(String query) throws SQLException {
+		JdbcTemplate db = new JdbcTemplate(DBManager.getInstance()
+				.getDataSource());
+		try {
+			db.execute(query);
+		} catch (Exception e) {
+			throw new SQLException("Error while executing query: ' " + query
+					+ " '");
+		}
 	}
 
 }

@@ -14,8 +14,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/RAINA/Documents/WorkSpace-TEST/Sample/WebContent/WEB-INF/lib/spring-2.5.6.jar"/>
 	<classpathentry kind="lib" path="C:/Users/RAINA/Documents/WorkSpace-TEST/Sample/WebContent/WEB-INF/lib/org.apache.commons-logging-1.0.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RAINA/Documents/WorkSpace-TEST/Sample/WebContent/WEB-INF/lib/mysql-connector-java-3.1.8-bin.jar"/>
+	<classpathentry kind="lib" path="E:/work/dev/SHEPHERTZ/PAAS/App42_PaaS_SampleApps/Sample-JAVA-SQL/WebContent/WEB-INF/lib/mysql-connector-java-3.1.8-bin.jar"/>
+	<classpathentry kind="lib" path="E:/work/dev/SHEPHERTZ/PAAS/App42_PaaS_SampleApps/Sample-JAVA-SQL/WebContent/WEB-INF/lib/spring-2.5.6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
