@@ -27,9 +27,9 @@ foreach ($lines as $line) {
 $dbconn = pg_connect("host=$ip port=$port dbname=$dbName user=$user password=$password") 
 		or die('Could not connect: ' . pg_last_error());
 try{
-	pg_query("CREATE TABLE app42_user(name VARCHAR(255), email VARCHAR(355), description TEXT)") or die('Query failed: ' . pg_last_error());
+	pg_query("CREATE TABLE app42_user(name VARCHAR(255), email VARCHAR(355), description TEXT)");
 }catch(Exception $e){
-	print_r("Exception Occured");
+	print_r("Table Already Created");
 }		
 		
 $query = "insert into app42_user(name,email,description) values('$name','$email','$description')";
