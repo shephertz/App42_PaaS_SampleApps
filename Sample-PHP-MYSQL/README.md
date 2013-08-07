@@ -3,6 +3,8 @@ Getting Started with Php-MySql Sample Application:
 
 This application is basically a simple User Input Form that takes input from user and saves it in database.
 
+<b>[Download the source code from git.](https://github.com/shephertz/App42_PaaS_SampleApps/archive/master.zip)</b>
+
 Configuration:
 -------------
 
