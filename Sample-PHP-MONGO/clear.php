@@ -1,9 +1,30 @@
 <?php 
 try{
 //connection to the database
-$conn = new Mongo('localhost:27017');
+$lines = file("Config.properties");
+$user;
+$dbName;
+$ip;
+$port;
+$password; 
+foreach ($lines as $line) {
+        list($k, $v) = explode('=', $line);
+		if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.username"))) {
+			$user = rtrim(ltrim($v));
+        }if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.port"))) {
+			$port = rtrim(ltrim($v));
+        }if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.password"))) {
+			$password = rtrim(ltrim($v));
+        }if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.ip"))) {
+			$ip = rtrim(ltrim($v));
+        }if (rtrim(ltrim($k)) == rtrim(ltrim("app42.paas.db.name"))) {
+			$dbName = rtrim(ltrim($v));
+        }
+ }
+#$conn = new Mongo('localhost:27017');
+$conn = new Mongo("mongodb://$user:$password@$ip:$port");
  // access database
-$db = $conn->testsamplephp;
+$db = $conn->$dbName;
  // access collection
 $collection = $db->user;
  // remove collection

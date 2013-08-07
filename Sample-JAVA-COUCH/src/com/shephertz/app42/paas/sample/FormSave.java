@@ -1,6 +1,7 @@
 package com.shephertz.app42.paas.sample;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,15 +30,6 @@ public class FormSave extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
-		new DBManager().delete();
-		String newUrl = "http://" + req.getServerName() + ":"
-				+ req.getServerPort() + req.getContextPath() + "/Home";
-
-		resp.setStatus(resp.SC_MOVED_PERMANENTLY);
-		resp.setHeader("Location", newUrl);
-		// super.doDelete(req, resp);
 	}
 
 	/**
@@ -47,21 +39,28 @@ public class FormSave extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String username = request.getParameter("username");
+		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String description = request.getParameter("description");
 
 		try {
-			new DBManager().insert(username, email, description);
+			new DBManager().insert(name, email, description);
+
+			String newUrl = "http://" + request.getServerName() + ":"
+					+ request.getServerPort() + request.getContextPath()
+					+ "/home";
+
+			response.setStatus(response.SC_MOVED_PERMANENTLY);
+			response.setHeader("Location", newUrl);
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			response.setContentType("text/html");
+			PrintWriter out = response.getWriter();
+			out.print("<!doctype html><html><head><meta charset='utf-8'><title>App42 Sample Java-Couch Application</title><link href='css/style-User-Input-Form.css' rel='stylesheet' type='text/css'></head><body><div class='App42PaaS_header_wrapper'><div class='App42PaaS_header_inner'><div class='App42PaaS_header'><div class='logo'><a href='http://paas.shephertz.com'><img border='0' alt='App42PaaS' src='images/logo.png'></img></a></div></div></div></div><div class='App42PaaS_body_wrapper'><div class='App42PaaS_body'><div class='App42PaaS_body_inner'><div class='contactPage_title'>");
+			out.print("<h2 align='center'>Error occured. See Logs.</h2><br/><br/>");
+			out.print("<br/><a href='/' style='font-size: 18px;'>Back</a>");
+			out.print("</div></div></div></div></body></html>");
 		}
-
-		String newUrl = "http://" + request.getServerName() + ":"
-				+ request.getServerPort() + request.getContextPath() + "/Home";
-
-		response.setStatus(response.SC_MOVED_PERMANENTLY);
-		response.setHeader("Location", newUrl);
 
 	}
 

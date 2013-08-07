@@ -13,19 +13,24 @@ import com.shephertz.app42.paas.sample.util.Util;
 
 public class DBManager {
 
-	static MongoClient mongoClient = null;
-	static DB db = null;
+	MongoClient mongoClient = null;
+	DB db = null;
 
-	static {
-		String dbUrl = Util.getDBUrl();
+	public DBManager() throws Exception {
+		String dbIp = Util.getDBIp();
 		int port = Util.getDBPort();
 		String dbName = Util.getDBName();
 		String dbUser = Util.getDBUser();
 		String password = Util.getDBPassword();
+		System.out.println(password+" "+dbUser+" "+dbIp+" "+port+" "+password);
 		try {
-			mongoClient = new MongoClient(dbUrl, port);
-			// boolean auth = db.authenticate(dbUser, password.toCharArray());
+			mongoClient = new MongoClient(dbIp, port);
 			db = mongoClient.getDB(dbName);
+			boolean auth = db.authenticate(dbUser, password.toCharArray());
+			if (!auth) {
+				System.out.println("Authentication Failed");
+				throw new Exception("Authentication Failed");
+			}
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -33,12 +38,12 @@ public class DBManager {
 
 	}
 
-	public static void insert(String user, String email, String description) {
+	public void insert(String name, String email, String description) {
 		try {
 			// boolean auth = db.authenticate(dbUser, password.toCharArray());
 			DBCollection table = db.getCollection("user");
 			BasicDBObject newDocument = new BasicDBObject();
-			newDocument.put("username", user);
+			newDocument.put("name", name);
 			newDocument.put("email", email);
 			newDocument.put("description", description);
 
@@ -49,7 +54,7 @@ public class DBManager {
 		}
 	}
 
-	public static ArrayList<DBObject> select() {
+	public ArrayList<DBObject> select() {
 		DBCollection table = db.getCollection("user");
 		DBCursor dbCursor = table.find();
 		ArrayList<DBObject> dbObjectsArray = new ArrayList<DBObject>();
@@ -60,8 +65,8 @@ public class DBManager {
 		System.out.println(dbObjectsArray);
 		return dbObjectsArray;
 	}
-	
-	public static void delete() {
+
+	public void delete() {
 		System.out.println("---------------------------DBM-------------");
 		DBCollection table = db.getCollection("user");
 		table.drop();

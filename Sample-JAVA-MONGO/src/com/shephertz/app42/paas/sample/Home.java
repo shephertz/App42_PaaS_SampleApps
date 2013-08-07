@@ -37,28 +37,33 @@ public class Home extends HttpServlet {
 		// TODO Auto-generated method stub
 		ArrayList<DBObject> result = null;
 		try {
-			result = DBManager.select();
+			result = new DBManager().select();
+			response.setContentType("text/html");
+			PrintWriter out = response.getWriter();
+			out.print("<!doctype html><html><head><meta charset='utf-8'><title>App42 Sample Java-Mongo Application</title><link href='css/style-User-Input-Form.css' rel='stylesheet' type='text/css'></head><body><div class='App42PaaS_header_wrapper'><div class='App42PaaS_header_inner'><div class='App42PaaS_header'><div class='logo'><a href='http://paas.shephertz.com'><img border='0' alt='App42PaaS' src='images/logo.png'></img></a></div></div></div></div><div class='App42PaaS_body_wrapper'><div class='App42PaaS_body'><div class='App42PaaS_body_inner'><div class='contactPage_title'>");
+			if (result.size() != 0) {
+				out.print("<table><thead class='table-head'><tr><td>Id</td><td>Result</td></tr></thead><tbody>");
+				for (int i = 0; i < result.size(); i++) {
+					out.print("<tr><td>" + i + "</td><td>" + result.get(i)
+							+ "</td></tr>");
+				}
+				out.print("</tbody></table>");
+				out.print("<div align=\"left\"><form action=\"save\" method=\"get\"><input type=\"submit\" value=\"Clear Data\" /></form></div>");
+
+			} else if (result.size() == 0) {
+				out.print("<h1>No data</h1><br/><br/>");
+			}
+			out.print("<br/><a href='/' style='font-size: 18px;'>Create Post</a>");
+			out.print("</div></div></div></div></body></html>");
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			response.setContentType("text/html");
+			PrintWriter out = response.getWriter();
+			out.print("<!doctype html><html><head><meta charset='utf-8'><title>App42 Sample Java-Mongo Application</title><link href='css/style-User-Input-Form.css' rel='stylesheet' type='text/css'></head><body><div class='App42PaaS_header_wrapper'><div class='App42PaaS_header_inner'><div class='App42PaaS_header'><div class='logo'><a href='http://paas.shephertz.com'><img border='0' alt='App42PaaS' src='images/logo.png'></img></a></div></div></div></div><div class='App42PaaS_body_wrapper'><div class='App42PaaS_body'><div class='App42PaaS_body_inner'><div class='contactPage_title'>");
+			out.print("<h2 align='center'>Error occured. See Logs.</h2><br/><br/>");
+			out.print("<br/><a href='/' style='font-size: 18px;'>Back</a>");
+			out.print("</div></div></div></div></body></html>");
 		}
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.print("<html><title>App42-Java-Mongo-Sample </title><body>");
-		if (result.size() != 0) {
-			out.print("<table border='1'><tr><td><b>Id</b></td><td><b>Result</b></td></tr>");
-			for (int i = 0; i < result.size(); i++) {
-				out.print("<tr><td>" + i + "</td><td>" + result.get(i)
-						+ "</td></tr>");
-			}
-			out.print("</table>");
-			out.print("<div align=\"left\"><form action=\"save\" method=\"get\"><input type=\"submit\" value=\"Clear Data\" /></form></div>");
-			
-		} else if (result.size() == 0) {
-			out.print("<h1>No data</h1><br/><br/>");
-		}
-		out.print("<a href='/'>Create Post</a>");
-		out.print("</body></html>");
 	}
 
 	@Override

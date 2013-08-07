@@ -12,7 +12,7 @@ public class Util {
 	static File dbFile = null;
 	static {
 		try {
-			dbFile = new File("../webapps/ROOT/Config.properties");
+			dbFile = new File("ROOT/Config.properties");
 			dbProps.load(new FileInputStream(dbFile.getAbsolutePath()));
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
@@ -22,8 +22,8 @@ public class Util {
 		}
 	}
 
-	public static String getDBUrl() {
-		return dbProps.getProperty("app42.paas.db.url");
+	public static String getDBIp() {
+		return dbProps.getProperty("app42.paas.db.ip");
 	}
 
 	public static String getDBPassword() {
