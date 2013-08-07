@@ -12,7 +12,7 @@ STS/Eclipse Configuration:
 
 In order to configure this application following steps are to be done:
 
-         1. Import the project in STS.
+         1. Import the project in STS/Eclipse.
 
          2. Right click on the Project and go to properties.
 
