@@ -13,9 +13,9 @@ test:
 
 production:
   protocol: 'https'
-  host: localhost
-  port: 5984
+  host: 10.0.0.52
+  port: 16175
   prefix: rails_with_couchdb
   suffix: production
-  username: root
-  password: 123
+  username: i796lrpkgh23ir9n
+  password: '84aevm53kr9rjn3v9uhgysnpkxe8kfmy'
