@@ -32,9 +32,9 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: demo_db
+  database: demodb
   pool: 5
   host: 10.0.0.52
-  port: 35814
-  username: 8n5vvzhdhvkourll
-  password: 'd46wl57kiv9j6cq62cgyjzsso8id1ma0'
+  port: 49600
+  username: 14r1utjoowt9dwcz
+  password: '9wfet2tvulr5w5s6zc1jxa7gtb6cs9wa'
