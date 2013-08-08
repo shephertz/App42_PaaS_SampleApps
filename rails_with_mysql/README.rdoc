@@ -36,6 +36,131 @@ To install the client gem, you must have ruby installed on your system.
 3. Check the ruby version.
 
     $ ruby -v
+    
+4. INSTALL APP42 CLIENT (download app42 client and move to download directory )
+
+    $gem install app42-0.5.1.gem   
+    
+5. Check the version of the currently loaded App42 client
+
+    $ app42  version    
+    
+===== Note: app42 require Ruby 1.9.2 or newer.  
+
+==== Mac OS X
+
+To install the client gem, you must have ruby installed on your system.
+
+Ruby 1.8.7 is fully supported in Mac OS X Lion as well as many popular Ruby gems (packages). For details, see the  Ruby wiki at Mac OS Forge. 
+You can use MacPort to download and compile everything.
+
+1. Install MacPort http://www.macports.org/
+
+2. From a terminal window, install Ruby
+
+    $ sudo port install ruby19 _nosuffix
+    $ sudo port select --set ruby ruby19
+    $ alias ruby='/opt/local/bin/ruby1.9'
+
+3. Check ruby version.
+ 
+    $ ruby -v
+
+4. INSTALL APP42 CLIENT (download app42 client and move to download dir )
+
+    $gem install app42-0.5.1.gem
+
+5. Check the version of the currently loaded App42 client
+
+    $ app42  version
+
+===== Note: app42 require Ruby 1.9.2 or newer.
+    
+==== Windows    
+
+To install the client gem, you must have ruby installed on your system.
+
+Download and install Ruby Installer for Windows and set ruby to your path to access App42 from command prompt.
+
+Then got to command prompt from windows Start menu,  Open cmd and install App42 client.
+
+1. Check ruby version.
+
+    $ ruby -v
+
+2. INSTALL APP42 CLIENT(download app42 client and move to download dir )
+
+    $ gem install app42-0.5.0.gem
+
+3. Check the version of the currently loaded App42 client
+
+    $ app42  version
+
+===== Note: app42 require Ruby 1.9.2 or newer.
+
+=== Configure App42 credentials
+
+After installing the App42, you’ll have access to the App42 command from your command shell. Configure API and Secret key using below command.
+
+1. List keys of the current user
+
+    $app42 keys
+    
+2. Add API and secret keys on dev system
+
+    $app42 addKeys
+    
+=== Setup infrastructure for required environment(Rails 4.0 + Mysql)
 
 
+    $ app42 setupInfra   
+    
+=== Prerequisite production environment configuration
+
+Gemfile(app_root_dir/Gemfile)
+
+If you are use a different database in development.
+Create or change the production group to include mysql
+#Ensure the MySQL gem is defined in your Gemfile 
+
+    group :production do 
+      gem 'mysql2'
+    end
+
+config
+
+In config/environments/production.rb change
+
+    config.assets.compile = false => config.assets.compile = true
+
+and
+
+    config.serve_static_assets = false => config.serve_static_assets = true
+
+and uncomment below configuration.
+
+    config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
+
+=== Create service (mysql)
+
+    $ app42 createService
+    
+DB Configure for Production environment (application_root_dir/config/database.yml) 
+
+    adapter: mysql2
+    host: <host>
+    port: <port>
+    database: <database name> 
+    username: <user_name>
+    password: '<password>'
+    
+=== Deploy a Ruby on Rails application
+
+    $ app42 deploy
+
+==== Get application details:
+
+    $ app42 appInfo --app AppName    
+    
+Visit your application:
 
