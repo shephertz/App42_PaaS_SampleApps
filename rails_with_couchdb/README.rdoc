@@ -145,7 +145,7 @@ and uncomment below configuration.
 
     $ app42 createService
     
-DB Configure for Production environment (application_root_dir/config/database.yml) 
+DB Configure for Production environment (application_root_dir/config/couchdb.yml) 
     
     protocol: 'https'
     host: <host>
