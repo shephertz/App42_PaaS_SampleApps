@@ -4,7 +4,7 @@
 2. Install the App42 client
 3. Configure App42 credentials
 4. Setup infrastructure for required environment
-5. Create service (mysql)
+5. Create service (postgresql)
 6. Deploy a Ruby on Rails application
 
 === Sign up
@@ -110,7 +110,7 @@ After installing the App42, you’ll have access to the App42 command from your 
 
     $app42 addKeys
     
-=== Setup infrastructure for required environment(Rails 4.0 + Mysql)
+=== Setup infrastructure for required environment(Rails 4.0 + Postgresql)
 
 
     $ app42 setupInfra   
@@ -120,8 +120,8 @@ After installing the App42, you’ll have access to the App42 command from your 
 Gemfile(app_root_dir/Gemfile)
 
 If you are use a different database in development.
-Create or change the production group to include mysql
-#Ensure the MySQL gem is defined in your Gemfile 
+Create or change the production group to include Postgresql
+#Ensure the pg gem is defined in your Gemfile 
 
     group :production do 
       gem 'pg'
