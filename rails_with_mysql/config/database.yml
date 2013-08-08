@@ -35,6 +35,6 @@ production:
   database: demodb
   pool: 5
   host: 10.0.0.52
-  port: 26756
-  username: pclfnqbxn67z81ih
-  password: 'os1xgqux7fjbx76tyk8f2yp2zsuz10qs'
+  port: 5965
+  username: 0j2oev9fkuvvvr8a
+  password: 'g0cdihph1ezc72wrtntbkp70qle34551'
