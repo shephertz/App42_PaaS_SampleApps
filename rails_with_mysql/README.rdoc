@@ -1,5 +1,4 @@
-
-# Getting Start with App42
+== Getting Start with App42
 
 1. Sign up
 2. Install the App42 client
@@ -8,7 +7,7 @@
 5. Create service (mysql)
 6. Deploy a Ruby on Rails application
 
-## Sign up
+=== Sign up
 
 Sign up OR login for a App42PaaS account, if you don’t already have account.
 
