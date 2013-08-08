@@ -26,7 +26,8 @@ foreach ($lines as $line) {
         }
  }
 #$conn = new Mongo('localhost:27017');
-$conn = new Mongo("mongodb://$user:$password@$ip:$port");
+#$conn = new Mongo("mongodb://$user:$password@$ip:$port");
+$conn = new Mongo("mongodb://$ip:$port");
  // access database
 $db = $conn->$dbName;
  // access collection

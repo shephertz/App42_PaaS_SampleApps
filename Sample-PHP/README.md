@@ -5,14 +5,14 @@ This is a simple Php application. This application Welcomes you to App42PaaS.
 
 <b>[Download the source code from git.](https://github.com/shephertz/App42_PaaS_SampleApps/archive/master.zip)</b>
 
-Update Aplication:
--------------------
+Project Configuration:
+----------------------
 
 In order to change the message , Edit index.php file.
 
 
-Build the project:
-------------------
+Building the project:
+----------------------
 
  Make the binary of this Application and start deploying your app on App42PaaS.
         

@@ -1,16 +1,16 @@
-Getting Started with Java-PostgreSql Sample Application:
+Getting Started with Php-PostgreSql Sample Application:
 ----------------------------------------------------
 
 This application is basically a simple User Input Form that takes input from user and saves it in database.
 
 <b>[Download the source code from git.](https://github.com/shephertz/App42_PaaS_SampleApps/archive/master.zip)</b>
 
-Configuration:
--------------
+Project Configuration:
+----------------------
 
 In order to configure this application following steps are to be done:
 
-1. Open Config.properties (located in WebContent folder).
+1. Open Config.properties.
 
 2. Update the details of your PostgreSql service in it.
 
@@ -20,7 +20,7 @@ In order to configure this application following steps are to be done:
          app42.paas.db.ip = <your_service_ip>
          app42.paas.db.name = <your_database_name>
 
-3. Export the application as war and deploy the binary on App42PaaS.
+3. Make the binary of this Application and start deploying your app on App42PaaS.
         
          $ app42 deploy
          $ Enter App Name: <your_app_name>

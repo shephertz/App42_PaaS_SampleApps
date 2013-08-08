@@ -5,8 +5,8 @@ This application is basically a simple User Input Form that takes input from use
 
 <b>[Download the source code from git.](https://github.com/shephertz/App42_PaaS_SampleApps/archive/master.zip)</b>
 
-Configuration:
--------------
+Project Configuration:
+----------------------
 
 In order to configure this application following steps are to be done:
 
