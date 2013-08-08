@@ -152,8 +152,8 @@ production:
   sessions:
     default:
        database: <database name>
-       hosts: <host>
-       port: <port>
+       hosts: 
+         - <host>:<port>
        username: <user nmae>
        password: <password>
        options:
