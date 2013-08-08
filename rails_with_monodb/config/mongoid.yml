@@ -82,11 +82,11 @@ test:
 production:
   sessions:
     default:
-      database: demodb
+      database: 
       hosts: 
-        - 10.0.0.52:3060
-      username: dgd1z88evslsl2p2
-      password: '88ijnhroxdulo5ipqp61dncczo4kz3kf'
+        - localhost:5262
+      username: 
+      password: 
       options:
         consistency: :strong
         # In the test environment we lower the retries and retry interval to
