@@ -14,8 +14,8 @@ test:
 production:
   protocol: 'https'
   host: 10.0.0.52
-  port: 16175
-  prefix: rails_with_couchdb
-  suffix: production
-  username: i796lrpkgh23ir9n
-  password: '84aevm53kr9rjn3v9uhgysnpkxe8kfmy'
+  port: 4302
+  prefix: demodb
+  suffix: _production
+  username: d0wtwd2w74xgo1a6
+  password: 'i0hqs3epr0vla5woajz04bwhgos39q0l'

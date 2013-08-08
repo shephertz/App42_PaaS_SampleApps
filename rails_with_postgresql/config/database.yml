@@ -59,7 +59,7 @@ production:
   encoding: unicode
   host: 10.0.0.52
   port: 64112
-  database: rails_with_postgresql_production
+  database: demodb
   pool: 5
   username: ckbvqazaefhe1afc
   password: '1mg7wj0wqdpnjzkh1o18lxpwwugitbn9'
