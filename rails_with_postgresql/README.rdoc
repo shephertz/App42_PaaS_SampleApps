@@ -147,7 +147,7 @@ and uncomment below configuration.
     
 DB Configure for Production environment (application_root_dir/config/database.yml) 
 
-    adapter: mysql2
+    adapter: postgresql
     host: <host>
     port: <port>
     database: <database name> 
