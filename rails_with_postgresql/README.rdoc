@@ -9,7 +9,7 @@
 
 === Sign up
 
-Sign up OR login for a App42PaaS account, if you don’t already have account.
+Sign up OR login(http://54.218.127.212:8081/login/index) for a App42PaaS account, if you don’t already have account.
 
 - visit http://54.218.127.212:8081 website and click Login OR Signup link. 
 
@@ -80,7 +80,7 @@ You can use MacPort to download and compile everything.
 
 To install the client gem, you must have ruby installed on your system.
 
-Download and install Ruby Installer for Windows and set ruby to your path to access App42 from command prompt.
+Download and install Ruby Installer(http://rubyinstaller.org/) for Windows and set ruby to your path to access App42 from command prompt.
 
 Then got to command prompt from windows Start menu,  Open cmd and install App42 client.
 
@@ -141,7 +141,7 @@ and uncomment below configuration.
 
     config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
-=== Create service (mysql)
+=== Create service (postgresql)
 
     $ app42 createService
     
