@@ -17,6 +17,9 @@ In order to configure this application following steps are to be done:
          2. Right click on the Project and go to properties.
 
          3. Under java build path, Configure your Tomcat and Java path.
+		 
+Note: For Eclipse, you have to enable Java Web applications (download the addon).
+
 
 Project Configuration:
 --------------------------
