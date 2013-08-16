@@ -51,14 +51,15 @@ foreach ($lines as $line) {
 			$dbName = rtrim(ltrim($v));
         }
  }
-#$conn = new Mongo('localhost:27017');
-#$conn = new Mongo("mongodb://$user:$password@$ip:$port");
+// create connection
 $conn = new Mongo("mongodb://$ip:$port");
- // access database
+// access database
 $db = $conn->$dbName;
- // access collection
+// authenticate
+$db->authenticate($user, $password);
+// access collection
 $collection = $db->user;
- // retrieve all documents
+// retrieve all documents
 $cursor = $collection->find();
 foreach ($cursor as $obj) {
 	echo "<tr><td>" . $obj['_id']. "</td>";

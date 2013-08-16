@@ -25,14 +25,15 @@ foreach ($lines as $line) {
 			$dbName = rtrim(ltrim($v));
         }
  }
-#$conn = new Mongo('localhost:27017');
-#$conn = new Mongo("mongodb://$user:$password@$ip:$port");
+// create connection
 $conn = new Mongo("mongodb://$ip:$port");
- // access database
+// access database
 $db = $conn->$dbName;
- // access collection
+// authenticate
+$db->authenticate($user, $password);
+// access collection
 $collection = $db->user;
- // insert a new document
+// insert a new document
 $item = array(
     'name' => $name,
     'email' => $email,
