@@ -1,0 +1,11 @@
+<% require 'thread' %>
+<h1>Process Started</h1>
+<% flag = false %>
+<% while flag == false %>
+  <%= Thread.new { puts "thread 1"}%>
+  <%= Thread.new { puts "thread 2"}%>
+  <%= Thread.new { puts "thread 3"}%>
+  <%= Thread.new { puts "thread 4"}%>
+<% end %>
+
+<%= link_to "Stop Process", url_for(:process, :show) %>
