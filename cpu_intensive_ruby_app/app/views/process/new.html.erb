@@ -1,0 +1,10 @@
+<% require 'thread' %>
+<h1>Process Started</h1>
+<% flag = false %>
+<% while flag == false %>
+  <% a = Thread.new { loop {} } %>
+  <% b = Thread.new { loop {} } %>
+  <% a.join %>
+<% end %>
+
+<%= link_to "Stop Process", url_for(:process, :show) %>
