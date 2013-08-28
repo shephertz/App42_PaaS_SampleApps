@@ -1,0 +1,11 @@
+<h1>Process Started</h1>
+<% result = "" %>
+
+
+<% (1..400_000).each do %>
+  <% result << "hello world\n" * 100_000 %>
+<% end %>
+
+
+
+<%= link_to "Stop Process", url_for(:process, :show) %>
